@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>El Mercado de Juanito · Huevos frescos</title>
 <meta name="description" content="Huevos frescos por calibre: Jumbo, Súper Extra, Extra, Primera y Segunda. Arma tu pedido y confírmalo por WhatsApp.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 122'%3E%3Ccircle cx='50' cy='21' r='7.5' fill='%23C8202A'/%3E%3Ccircle cx='60.5' cy='13.5' r='9' fill='%23C8202A'/%3E%3Ccircle cx='71' cy='20' r='7.5' fill='%23C8202A'/%3E%3Cpath d='M60 16.2C37.6 16.2 24.8 54.6 24.8 77S40.8 113.8 60 113.8 95.2 99.4 95.2 77 82.4 16.2 60 16.2Z' fill='%23FFFBF0' stroke='%237A3410' stroke-width='6'/%3E%3Cpath d='M80 35L96 41 80 47Z' fill='%23F5A51C'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 130'%3E%3Ccircle cx='30' cy='26' r='13' fill='%23C8202A'/%3E%3Ccircle cx='50' cy='16' r='16' fill='%23C8202A'/%3E%3Ccircle cx='70' cy='26' r='13' fill='%23C8202A'/%3E%3Cpath d='M50 30C26 30 12 70 12 92 12 116 29 128 50 128 71 128 88 116 88 92 88 70 74 30 50 30Z' fill='%23F5A51C' stroke='%233F6212' stroke-width='8'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -30,9 +30,12 @@ button{cursor:pointer}
 .header{position:sticky;top:0;z-index:20;background:var(--cream);border-bottom:3px solid var(--ink)}
 .header .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding-top:10px;padding-bottom:10px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
-.brand-text{display:flex;flex-direction:column;line-height:1}
-.brand-kicker{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--earth)}
-.brand-name{font-family:'Young Serif',serif;font-size:32px;color:var(--green)}
+.logo-b{display:flex;flex-direction:column;line-height:1}
+.logo-b .kicker{font-size:11px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--earth)}
+.logo-b .word{display:flex;align-items:baseline;font-family:'Young Serif',serif;font-size:40px;line-height:1.15;color:var(--green)}
+.logo-b .i{position:relative;display:inline-block}
+.logo-b .comb{position:absolute;left:50%;top:.204em;width:.278em;height:.185em;transform:translateX(-50%)}
+.logo-b .egg-o{width:.463em;height:.593em;margin-left:.028em;transform:rotate(-8deg)}
 .nav{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
 .nav a{color:var(--ink);text-decoration:none;font-weight:600;padding:12px 14px}
 .cart-btn{display:flex;align-items:center;gap:10px;min-height:44px;padding:8px 16px;border-radius:999px;border:2px solid var(--ink);background:var(--yolk);color:var(--ink);font-weight:700;font-size:15px}
@@ -178,7 +181,7 @@ button{cursor:pointer}
 @keyframes pop{0%{transform:scale(.92);opacity:0}100%{transform:scale(1);opacity:1}}
 @media (max-width:600px){
   .section-head h2{font-size:34px}.premio-copy h2{font-size:38px}
-  .brand-name{font-size:26px}.nav a{padding:10px 8px}
+  .logo-b .word{font-size:32px}.nav a{padding:10px 8px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none !important;scroll-behavior:auto !important}}
 </style>
@@ -188,16 +191,12 @@ button{cursor:pointer}
 <header class="header">
   <div class="wrap">
     <a class="brand" href="#" aria-label="El Mercado de Juanito, inicio">
-      <svg width="56" height="56" viewBox="0 0 120 122" aria-hidden="true">
-        <circle cx="50" cy="21" r="7.5" fill="#C8202A"/><circle cx="60.5" cy="13.5" r="9" fill="#C8202A"/><circle cx="71" cy="20" r="7.5" fill="#C8202A"/>
-        <path d="M60 16.2C37.6 16.2 24.8 54.6 24.8 77 24.8 99.4 40.8 113.8 60 113.8 79.2 113.8 95.2 99.4 95.2 77 95.2 54.6 82.4 16.2 60 16.2Z" fill="#FFFBF0" stroke="#7A3410" stroke-width="5"/>
-        <path d="M80 35 96 41 80 47Z" fill="#F5A51C" stroke="#7A3410" stroke-width="3" stroke-linejoin="round"/>
-        <path d="M82 50C88 53 87 63 81.5 63 78.5 59 78.5 54 82 50Z" fill="#C8202A"/>
-        <path d="M64 38Q68.5 33 73 38" fill="none" stroke="#3B1E0C" stroke-width="3.5" stroke-linecap="round"/>
-        <path d="M41 74C47 92 69 95 78 80" fill="none" stroke="#7A3410" stroke-width="4.5" stroke-linecap="round"/>
-        <path d="M51 114V120M69 114V120" stroke="#F5A51C" stroke-width="4.5" stroke-linecap="round"/>
-      </svg>
-      <span class="brand-text"><span class="brand-kicker">El Mercado de</span><span class="brand-name">Juanito</span></span>
+      <span class="logo-b" aria-hidden="true">
+        <span class="kicker">El Mercado de</span>
+        <span class="word">
+          <span>Juan</span><span class="i">ı<svg class="comb" viewBox="0 0 30 20"><circle cx="7" cy="13" r="6" fill="#C8202A"/><circle cx="15" cy="8" r="7.5" fill="#C8202A"/><circle cx="23" cy="13" r="6" fill="#C8202A"/></svg></span><span>t</span><svg class="egg-o" viewBox="0 0 100 130"><path d="M50 4C22 4 6 52 6 80 6 108 26 126 50 126 74 126 94 108 94 80 94 52 78 4 50 4Z" fill="#F5A51C" stroke="#3F6212" stroke-width="12"/></svg>
+        </span>
+      </span>
     </a>
     <nav class="nav" aria-label="Principal">
       <a href="#catalogo">Catálogo</a>
