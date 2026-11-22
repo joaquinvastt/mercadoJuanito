@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>El Mercado de Juanito · Huevos frescos</title>
+<meta name="description" content="Huevos frescos por calibre: Jumbo, Súper Extra, Extra, Primera y Segunda. Arma tu pedido y confírmalo por WhatsApp.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 122'%3E%3Ccircle cx='50' cy='21' r='7.5' fill='%23C8202A'/%3E%3Ccircle cx='60.5' cy='13.5' r='9' fill='%23C8202A'/%3E%3Ccircle cx='71' cy='20' r='7.5' fill='%23C8202A'/%3E%3Cpath d='M60 16.2C37.6 16.2 24.8 54.6 24.8 77S40.8 113.8 60 113.8 95.2 99.4 95.2 77 82.4 16.2 60 16.2Z' fill='%23FFFBF0' stroke='%237A3410' stroke-width='6'/%3E%3Cpath d='M80 35L96 41 80 47Z' fill='%23F5A51C'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#3B1E0C; --cream:#FFFBF0; --shell:#FFF1D6; --green:#3F6212; --red:#C8202A; --red-dark:#9F1B22;
+  --yolk:#F5A51C; --earth:#7A3410; --muted:#6B4E31; --body:#4A3524;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--red)}a:hover{color:var(--red-dark)}
+button,a,input,textarea{font-family:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid #2563EB;outline-offset:2px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.display{font-family:'Bricolage Grotesque',sans-serif;font-weight:800}
+.serif{font-family:'Young Serif',serif;font-weight:400}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* Header */
+.header{position:sticky;top:0;z-index:20;background:var(--cream);border-bottom:3px solid var(--ink)}
+.header .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding-top:10px;padding-bottom:10px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.brand-text{display:flex;flex-direction:column;line-height:1}
+.brand-kicker{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--earth)}
+.brand-name{font-family:'Young Serif',serif;font-size:32px;color:var(--green)}
+.nav{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.nav a{color:var(--ink);text-decoration:none;font-weight:600;padding:12px 14px}
+.cart-btn{display:flex;align-items:center;gap:10px;min-height:44px;padding:8px 16px;border-radius:999px;border:2px solid var(--ink);background:var(--yolk);color:var(--ink);font-weight:700;font-size:15px}
+.badge{background:var(--ink);color:var(--cream);border-radius:999px;min-width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-size:13px;padding:0 6px}
+
+/* Hero */
+.hero{background:var(--green);color:var(--cream);border-bottom:3px solid var(--ink)}
+.hero .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:40px;padding-top:56px;padding-bottom:56px}
+.hero-copy{flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:20px}
+.pill{align-self:flex-start;background:var(--yolk);color:var(--ink);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:999px}
+.hero h1{margin:0;font-size:clamp(40px,6vw,72px);line-height:1;letter-spacing:-.01em}
+.hero p{margin:0;font-size:19px;line-height:1.5;max-width:520px}
+.btn-row{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 24px;border-radius:14px;font-weight:700;font-size:17px;text-decoration:none;border:2px solid var(--ink)}
+.btn-yolk{background:var(--yolk);color:var(--ink)}.btn-yolk:hover{color:var(--ink);filter:brightness(1.05)}
+.btn-ghost{background:transparent;color:var(--cream);border-color:var(--cream)}.btn-ghost:hover{color:var(--cream);background:rgba(255,251,240,.1)}
+.btn-red{background:var(--red);color:#fff}.btn-red:hover{color:#fff;background:var(--red-dark)}
+.btn-green{background:var(--green);color:#fff}.btn-green:hover{color:#fff;filter:brightness(1.1)}
+.btn-block{width:100%}
+.btn[disabled]{background:#F2EADC;color:var(--body);border-style:dashed;border-color:var(--muted);cursor:not-allowed;font-size:15px}
+.compare{flex:1 1 420px;min-width:0;background:var(--cream);color:var(--ink);border:3px solid var(--ink);border-radius:24px;box-shadow:8px 8px 0 var(--ink);padding:24px}
+.compare-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.compare-head h2{margin:0;font-size:22px}
+.small-muted{font-size:13px;color:var(--muted)}
+.sizes{display:flex;align-items:flex-end;justify-content:space-between;gap:8px;margin-top:20px;padding-bottom:12px;border-bottom:3px solid var(--ink)}
+.sizes>div,.size-labels>div{flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:center;text-align:center}
+.sizes svg{max-width:100%;height:auto}
+.size-labels{display:flex;justify-content:space-between;gap:8px;margin-top:10px}
+.size-labels strong{font-size:14px}.size-labels span{font-size:12px;color:var(--muted)}
+
+/* Líneas de huevo: tradicional (blanco) vs pastoreo (café) */
+.catalog{--line-bg:#FFFFFF;--line-accent:#3F6212;--line-border:var(--ink);--line-chip:#F5A51C;--line-egg:#FFFFFF;--line-egg-stroke:#3B1E0C;
+  background:var(--line-bg);border-bottom:3px solid var(--ink);transition:background .35s ease}
+.catalog[data-line="pastoreo"]{--line-bg:#EAD7BC;--line-accent:#7A3410;--line-border:#5A2A0C;--line-chip:#C68B59;--line-egg:#C68B59;--line-egg-stroke:#5A2A0C}
+.line-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:24px}
+.line-tab{display:flex;align-items:center;gap:14px;text-align:left;padding:14px 18px;min-height:84px;border-radius:18px;border:3px dashed var(--ink);background:transparent;color:var(--ink)}
+.line-tab svg{flex:none}
+.line-tab b{display:block;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:20px;line-height:1.1}
+.line-tab span{font-size:14px;color:var(--body)}
+.line-tab[data-line="tradicional"][aria-pressed="true"]{background:#FFFFFF;border:3px solid var(--green);box-shadow:5px 5px 0 var(--green)}
+.line-tab[data-line="pastoreo"][aria-pressed="true"]{background:#7A3410;border:3px solid #3B1E0C;box-shadow:5px 5px 0 #3B1E0C;color:var(--cream)}
+.line-tab[data-line="pastoreo"][aria-pressed="true"] span{color:#F3E3CC}
+.line-tab[aria-pressed="false"]:hover{background:rgba(59,30,12,.06)}
+.line-banner{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-bottom:24px;padding:14px 18px;border-radius:14px;background:var(--line-accent);color:#FFFBF0;font-size:15px;line-height:1.4}
+.line-banner strong{font-size:16px}
+.catalog .card{border-color:var(--line-border);box-shadow:6px 6px 0 var(--line-border)}
+.catalog .grams{background:var(--line-chip);border-color:var(--line-border)}
+.catalog .fmt{border-color:var(--line-border)}
+.catalog .fmt[aria-pressed="true"]{background:var(--line-accent);border-color:var(--line-accent);color:#FFFBF0}
+.catalog .stepper{border-color:var(--line-border)}
+.catalog .section-head h2{color:var(--line-accent)}
+.chip{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:2px 8px;border-radius:999px;border:1.5px solid var(--ink);margin-left:6px;vertical-align:2px}
+.chip-tradicional{background:#FFFFFF;color:#3F6212;border-color:#3F6212}
+.chip-pastoreo{background:#7A3410;color:#FFFBF0;border-color:#7A3410}
+@media (max-width:600px){.line-tab{padding:12px;gap:10px}.line-tab b{font-size:17px}.line-tab svg{width:30px;height:39px}}
+
+/* Catálogo */
+.section{padding-top:64px;padding-bottom:32px}
+.section-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:28px}
+.section-head h2{margin:0;font-size:44px;letter-spacing:-.02em}
+.section-head p{margin:8px 0 0;font-size:17px;color:var(--body)}
+.note{font-size:13px;color:var(--muted);background:var(--shell);border:1px dashed #A07B52;padding:6px 10px;border-radius:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.card{background:#fff;border:3px solid var(--ink);border-radius:20px;box-shadow:6px 6px 0 var(--ink);padding:18px;display:flex;flex-direction:column;gap:14px}
+.card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.card-info{display:flex;flex-direction:column;gap:6px;min-width:0}
+.card h3{margin:0;font-size:26px;line-height:1}
+.grams{align-self:flex-start;background:var(--yolk);font-weight:700;font-size:13px;padding:4px 10px;border-radius:999px;border:2px solid var(--ink)}
+.ref{font-size:12px;color:var(--muted)}
+.formats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.fmt{min-height:44px;padding:4px 2px;border-radius:10px;border:2px solid var(--ink);background:#fff;color:var(--ink);font-weight:700;font-size:12px;line-height:1.15}
+.fmt small{display:block;font-weight:500;font-size:11px}
+.fmt[aria-pressed="true"]{background:var(--ink);color:var(--cream)}
+.price-row{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.price{font-size:30px}
+.buy-row{display:flex;align-items:center;gap:8px}
+.stepper{display:flex;align-items:center;border:2px solid var(--ink);border-radius:12px;overflow:hidden;flex:none}
+.stepper button{width:40px;height:44px;border:none;background:var(--shell);color:var(--ink);font-size:22px;font-weight:700}
+.stepper span{min-width:32px;text-align:center;font-weight:800;font-size:17px}
+.add{flex:1 1 auto;min-height:48px;border-radius:12px;border:2px solid var(--ink);background:var(--red);color:#fff;font-weight:700;font-size:15px}
+.add.done{background:var(--green);animation:pop .25s ease-out}
+.pts{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px}
+
+/* Pasos */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;padding-top:32px;padding-bottom:64px}
+.step{background:var(--shell);border:2px solid var(--ink);border-radius:18px;padding:20px;display:flex;gap:14px;align-items:flex-start}
+.step-n{flex:none;width:40px;height:40px;border-radius:50%;background:var(--ink);color:var(--cream);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px}
+.step h3{margin:0 0 4px;font-size:17px}.step p{margin:0;font-size:15px;line-height:1.45;color:var(--body)}
+
+/* Premio */
+.premio{background:var(--ink);color:var(--cream)}
+.premio .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:48px;padding-top:64px;padding-bottom:64px}
+.egg-col{flex:0 1 320px;min-width:0;display:flex;flex-direction:column;align-items:center;gap:16px;margin:0 auto}
+.egg-col svg{max-width:100%;height:auto}
+.pts-big{font-size:24px}
+.pending{font-size:14px;color:#FFE7A3;text-align:center}
+.premio-copy{flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:20px}
+.premio-copy h2{margin:0;font-size:48px;letter-spacing:-.02em;color:var(--yolk)}
+.premio-copy p{margin:0;font-size:18px;line-height:1.5;max-width:560px}
+.rules{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:520px}
+.rule{border:2px solid var(--cream);border-radius:14px;padding:14px;text-align:center}
+.rule b{display:block;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:28px;color:var(--yolk)}
+.rule span{font-size:14px;font-weight:600}
+.remaining{font-size:15px;color:#E8DCC8}
+.btn-demo{background:transparent;color:var(--cream);border:2px dashed var(--cream);font-weight:600;font-size:15px;padding:12px 18px;border-radius:14px;min-height:44px}
+.wobble{animation:wobble .9s ease-in-out infinite;transform-origin:50% 90%}
+
+/* Footer */
+.footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;font-size:14px;color:var(--body);padding-top:40px;padding-bottom:96px}
+
+/* Flotante */
+.float-cart{position:fixed;right:20px;bottom:20px;z-index:30;min-height:52px;padding:10px 20px;border-radius:999px;border:3px solid var(--ink);background:var(--yolk);color:var(--ink);font-weight:800;font-size:16px;box-shadow:4px 4px 0 var(--ink);animation:pop .25s ease-out}
+
+/* Carrito */
+.overlay{position:fixed;inset:0;z-index:50;background:rgba(59,30,12,.55);display:flex;justify-content:flex-end}
+.drawer{width:440px;max-width:100%;height:100%;background:var(--cream);border-left:3px solid var(--ink);display:flex;flex-direction:column}
+.drawer-head{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border-bottom:2px solid var(--ink)}
+.drawer-head h2{margin:0;font-size:24px}
+.icon-btn{width:44px;height:44px;border-radius:50%;border:2px solid var(--ink);background:#fff;color:var(--ink);display:flex;align-items:center;justify-content:center}
+.drawer-body{flex:1 1 auto;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:14px}
+.line{background:#fff;border:2px solid var(--ink);border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:10px}
+.line-top,.line-bottom{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.line-top strong{font-size:16px}
+.link-btn{background:none;border:none;color:var(--red-dark);font-weight:600;font-size:14px;text-decoration:underline;min-height:44px}
+.empty{text-align:center;padding:40px 0;display:flex;flex-direction:column;align-items:center;gap:12px}
+.field{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:14px}
+.field input,.field textarea{min-height:44px;padding:10px 12px;border-radius:10px;border:2px solid var(--ink);font-size:16px;background:#fff;color:var(--ink)}
+.field textarea{resize:vertical}
+.toggle{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.toggle button{min-height:44px;border-radius:10px;border:2px solid var(--ink);background:#fff;color:var(--ink);font-weight:700;font-size:15px}
+.toggle button[aria-pressed="true"]{background:var(--ink);color:var(--cream)}
+.info{background:var(--shell);border:2px dashed #A07B52;border-radius:12px;padding:12px;font-size:14px;line-height:1.45}
+.sent{text-align:center;padding:24px 0;display:flex;flex-direction:column;align-items:center;gap:14px;animation:pop .25s ease-out}
+.check{width:72px;height:72px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center}
+.sent h3{margin:0;font-size:26px}.sent p{margin:0;font-size:16px;line-height:1.5}
+.sent-pts{background:var(--ink);color:var(--cream);border-radius:14px;padding:14px 18px;font-weight:700}
+.drawer-foot{border-top:2px solid var(--ink);padding:16px 20px;display:flex;flex-direction:column;gap:10px;background:#fff}
+.total-row{display:flex;justify-content:space-between;align-items:baseline}
+.total-row b{font-size:28px}
+[hidden]{display:none !important}
+
+@keyframes wobble{0%,100%{transform:rotate(0)}25%{transform:rotate(-5deg)}75%{transform:rotate(5deg)}}
+@keyframes pop{0%{transform:scale(.92);opacity:0}100%{transform:scale(1);opacity:1}}
+@media (max-width:600px){
+  .section-head h2{font-size:34px}.premio-copy h2{font-size:38px}
+  .brand-name{font-size:26px}.nav a{padding:10px 8px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;scroll-behavior:auto !important}}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="wrap">
+    <a class="brand" href="#" aria-label="El Mercado de Juanito, inicio">
+      <svg width="56" height="56" viewBox="0 0 120 122" aria-hidden="true">
+        <circle cx="50" cy="21" r="7.5" fill="#C8202A"/><circle cx="60.5" cy="13.5" r="9" fill="#C8202A"/><circle cx="71" cy="20" r="7.5" fill="#C8202A"/>
+        <path d="M60 16.2C37.6 16.2 24.8 54.6 24.8 77 24.8 99.4 40.8 113.8 60 113.8 79.2 113.8 95.2 99.4 95.2 77 95.2 54.6 82.4 16.2 60 16.2Z" fill="#FFFBF0" stroke="#7A3410" stroke-width="5"/>
+        <path d="M80 35 96 41 80 47Z" fill="#F5A51C" stroke="#7A3410" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M82 50C88 53 87 63 81.5 63 78.5 59 78.5 54 82 50Z" fill="#C8202A"/>
+        <path d="M64 38Q68.5 33 73 38" fill="none" stroke="#3B1E0C" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M41 74C47 92 69 95 78 80" fill="none" stroke="#7A3410" stroke-width="4.5" stroke-linecap="round"/>
+        <path d="M51 114V120M69 114V120" stroke="#F5A51C" stroke-width="4.5" stroke-linecap="round"/>
+      </svg>
+      <span class="brand-text"><span class="brand-kicker">El Mercado de</span><span class="brand-name">Juanito</span></span>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#catalogo">Catálogo</a>
+      <a href="#premio">Huevo Premio</a>
+      <button type="button" class="cart-btn" data-open-cart>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.5 12h11.5l2-8H6.5"/></svg>
+        <span>Carrito</span><span class="badge" id="cartCount">0</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="pill">Pedidos por WhatsApp</span>
+        <h1 class="serif">Huevos frescos, elegidos por tamaño.</h1>
+        <p>Elige el calibre, arma tu pedido en segundos y confírmalo por WhatsApp. Cada compra llena tu <strong>Huevo Premio</strong>: al completarlo, te regalamos una docena.</p>
+        <div class="btn-row">
+          <a class="btn btn-yolk" href="#catalogo">Ver catálogo</a>
+          <a class="btn btn-ghost" href="#premio">Mi Huevo Premio · <span id="heroPct">0%</span></a>
+        </div>
+      </div>
+      <div class="compare">
+        <div class="compare-head">
+          <h2 class="display">Compara los tamaños</h2>
+          <span class="small-muted">Peso por unidad · escala ilustrativa</span>
+        </div>
+        <div class="sizes" id="sizes"></div>
+        <div class="size-labels" id="sizeLabels"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="catalogo" class="catalog" data-line="tradicional">
+   <div class="wrap section">
+    <div class="line-tabs" role="group" aria-label="Tipo de huevo">
+      <button type="button" class="line-tab" data-line="tradicional" aria-pressed="true">
+        <svg width="38" height="49" viewBox="0 0 100 130" aria-hidden="true"><path d="M50 4C22 4 6 52 6 80 6 108 26 126 50 126 74 126 94 108 94 80 94 52 78 4 50 4Z" fill="#FFFFFF" stroke="#3B1E0C" stroke-width="6"/></svg>
+        <div><b>Huevo tradicional</b><span>Cáscara blanca</span></div>
+      </button>
+      <button type="button" class="line-tab" data-line="pastoreo" aria-pressed="false">
+        <svg width="38" height="49" viewBox="0 0 100 130" aria-hidden="true"><path d="M50 4C22 4 6 52 6 80 6 108 26 126 50 126 74 126 94 108 94 80 94 52 78 4 50 4Z" fill="#C68B59" stroke="#3B1E0C" stroke-width="6"/></svg>
+        <div><b>Pastoreo controlado</b><span>Huevo de campo · cáscara café</span></div>
+      </button>
+    </div>
+    <div class="section-head">
+      <div>
+        <h2 class="display" id="lineTitle">Huevo tradicional</h2>
+        <p>Formato, cantidad y listo. Tu pedido se arma en un toque.</p>
+      </div>
+      <span class="note">Precios de ejemplo — reemplazar por los reales</span>
+    </div>
+    <div class="line-banner" id="lineBanner"></div>
+    <div class="grid" id="grid"></div>
+   </div>
+  </section>
+
+  <section class="wrap steps" aria-label="Cómo funciona">
+    <div class="step"><span class="step-n">1</span><div><h3>Arma tu pedido</h3><p>Elige calibre, formato y cantidad desde el catálogo.</p></div></div>
+    <div class="step"><span class="step-n">2</span><div><h3>Envíalo por WhatsApp</h3><p>El detalle completo llega directo al WhatsApp Business de la tienda.</p></div></div>
+    <div class="step"><span class="step-n">3</span><div><h3>Transfiere y listo</h3><p>Al recibir tu transferencia confirmamos la compra y sumas puntos.</p></div></div>
+  </section>
+
+  <section id="premio" class="premio">
+    <div class="wrap">
+      <div class="egg-col">
+        <div id="eggWrap">
+          <svg width="240" height="312" viewBox="0 0 100 130" role="img" id="eggSvg" aria-label="Huevo Premio">
+            <defs><clipPath id="eggclip"><path d="M50 4C22 4 6 52 6 80 6 108 26 126 50 126 74 126 94 108 94 80 94 52 78 4 50 4Z"/></clipPath></defs>
+            <path d="M50 4C22 4 6 52 6 80 6 108 26 126 50 126 74 126 94 108 94 80 94 52 78 4 50 4Z" fill="#FFFBF0"/>
+            <g clip-path="url(#eggclip)">
+              <rect id="pendingFill" x="0" y="126" width="100" height="130" fill="#F5A51C" opacity="0.4" style="transition:y .6s ease"/>
+              <rect id="solidFill" x="0" y="126" width="100" height="130" fill="#F5A51C" style="transition:y .6s ease"/>
+            </g>
+            <path d="M50 4C22 4 6 52 6 80 6 108 26 126 50 126 74 126 94 108 94 80 94 52 78 4 50 4Z" fill="none" stroke="#FFFBF0" stroke-width="3"/>
+            <text id="eggPct" x="50" y="84" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="22" fill="#3B1E0C">0%</text>
+          </svg>
+        </div>
+        <div class="display pts-big" id="ptsText">0 / 30 puntos</div>
+        <div class="pending" id="pendingText" hidden></div>
+      </div>
+      <div class="premio-copy">
+        <h2 class="display">Huevo Premio</h2>
+        <p>Cada compra confirmada llena tu huevo. Cuando llegue al 100%, reclama <strong>una docena de huevos gratis</strong>. Los puntos se suman cuando la tienda confirma tu transferencia.</p>
+        <div class="rules" id="rules"></div>
+        <div class="remaining" id="remaining"></div>
+        <div class="btn-row">
+          <a class="btn btn-yolk" id="claimBtn" target="_blank" rel="noopener" hidden>Reclamar mi docena gratis</a>
+          <button type="button" class="btn-demo" id="confirmDemo" hidden>Demo: la tienda confirmó la transferencia</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap footer">
+  <span><strong>El Mercado de Juanito</strong> · [ZONA DE REPARTO] · [HORARIO]</span>
+  <span id="footerPhone"></span>
+</footer>
+
+<button type="button" class="float-cart" id="floatCart" data-open-cart hidden></button>
+
+<div class="overlay" id="overlay" hidden>
+  <aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+    <div class="drawer-head">
+      <h2 class="display" id="drawerTitle">Tu pedido</h2>
+      <button type="button" class="icon-btn" aria-label="Cerrar carrito" data-close-cart>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+
+    <div class="drawer-body">
+      <!-- Paso 1: carrito -->
+      <div id="stepCart">
+        <div class="empty" id="emptyCart">
+          <svg width="64" height="84" viewBox="0 0 100 130" aria-hidden="true"><path d="M50 4C22 4 6 52 6 80 6 108 26 126 50 126 74 126 94 108 94 80 94 52 78 4 50 4Z" fill="#FFF1D6" stroke="#3B1E0C" stroke-width="5"/></svg>
+          <p>Tu carrito está vacío.</p>
+          <button type="button" class="btn btn-yolk" data-close-cart>Ir al catálogo</button>
+        </div>
+        <div id="cartLines" style="display:flex;flex-direction:column;gap:14px"></div>
+      </div>
+
+      <!-- Paso 2: datos -->
+      <form id="stepForm" hidden style="display:flex;flex-direction:column;gap:14px" onsubmit="return false">
+        <label class="field">Nombre<input id="fName" type="text" autocomplete="name" placeholder="Ej: María González"></label>
+        <label class="field">Tu teléfono (WhatsApp)<input id="fPhone" type="tel" autocomplete="tel" placeholder="+56 9 1234 5678"></label>
+        <div class="field" role="group" aria-label="Entrega">
+          <span>Entrega</span>
+          <div class="toggle">
+            <button type="button" data-delivery="retiro" aria-pressed="true">Retiro</button>
+            <button type="button" data-delivery="despacho" aria-pressed="false">Despacho</button>
+          </div>
+        </div>
+        <label class="field" id="addressField" hidden>Dirección de despacho<input id="fAddress" type="text" autocomplete="street-address" placeholder="Calle, número, comuna"></label>
+        <label class="field">Comentario (opcional)<textarea id="fNote" rows="2" placeholder="Ej: dejar en conserjería"></textarea></label>
+        <div class="info">Al enviar, se abrirá WhatsApp con el detalle de tu pedido. La tienda te responderá con los datos para transferir y confirmará la compra al recibir el pago.</div>
+      </form>
+
+      <!-- Paso 3: enviado -->
+      <div id="stepSent" class="sent" hidden>
+        <div class="check"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L19 7"/></svg></div>
+        <h3 class="display">¡Pedido enviado!</h3>
+        <p>Revisa tu WhatsApp: la tienda te enviará los datos de transferencia. Cuando confirme el pago, tu compra queda lista.</p>
+        <div class="sent-pts" id="sentPts"></div>
+        <a href="#premio" data-close-cart style="font-weight:700;padding:12px">Ver mi Huevo Premio</a>
+      </div>
+    </div>
+
+    <div class="drawer-foot" id="drawerFoot" hidden>
+      <div class="total-row"><span style="font-weight:600">Total</span><b class="display" id="cartTotal">$0</b></div>
+      <div class="small-muted" id="cartMeta"></div>
+      <button type="button" class="btn btn-red btn-block" id="toForm">Continuar</button>
+      <a class="btn btn-green btn-block" id="sendWa" target="_blank" rel="noopener" hidden>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 1-13.4 7.9L3 21l1.2-4.4A9 9 0 1 1 21 12z"/></svg>
+        Enviar pedido por WhatsApp
+      </a>
+      <button type="button" class="btn btn-block" id="sendDisabled" disabled hidden></button>
+      <button type="button" class="link-btn" id="toCart" hidden>Volver al carrito</button>
+    </div>
+  </aside>
+</div>
+
+<script>
+/* =========================================================
+   CONFIGURACIÓN — edita aquí
+   ========================================================= */
+const CONFIG = {
+  whatsapp: '56900000000',   // Número WhatsApp Business del dueño, sin + ni espacios
+  storeName: 'Mercado de Juanito',
+  goal: 30,                  // Puntos para ganar la docena gratis
+  demoStartPoints: 18,       // Puntos iniciales SOLO para la demo (poner 0 en producción)
+  showDemoButton: true       // Botón para simular la confirmación del dueño
+};
+
+const FORMATS = [
+  { id: 'docena',  label: 'Docena',  units: 12,  pts: 1 },
+  { id: 'bandeja', label: 'Bandeja', units: 30,  pts: 2 },
+  { id: 'caja',    label: 'Caja',    units: 180, pts: 12 }
+];
+
+// Líneas de huevo. eggFill = color de cáscara en los dibujos.
+const LINES = {
+  tradicional: {
+    label: 'Tradicional', title: 'Huevo tradicional', eggFill: '#FFFFFF',
+    banner: '<strong>Huevo blanco tradicional.</strong> El clásico de todos los días, en todos los calibres.'
+  },
+  pastoreo: {
+    label: 'Pastoreo controlado', title: 'Huevo de pastoreo controlado', eggFill: '#C68B59',
+    banner: '<strong>Huevo de campo, cáscara café.</strong> De gallinas en pastoreo controlado. [DESCRIBIR AQUÍ CÓMO SE CRÍAN]'
+  }
+};
+
+// Calibres según norma chilena (SERNAC) + Jumbo comercial. Precios de EJEMPLO por línea.
+const PRODUCTS = [
+  { id: 'jumbo',      name: 'Jumbo',       grams: 'Más de 74 g', ref: 'Calibre mayor',       h: 124,
+    prices: { tradicional: { docena: 5400, bandeja: 12900, caja: 74000 }, pastoreo: { docena: 6900, bandeja: 16500, caja: 95000 } } },
+  { id: 'superextra', name: 'Súper Extra', grams: '68 a 74 g',   ref: 'Norma: Especial',     h: 116,
+    prices: { tradicional: { docena: 4900, bandeja: 11500, caja: 66000 }, pastoreo: { docena: 6300, bandeja: 15000, caja: 86000 } } },
+  { id: 'extra',      name: 'Extra',       grams: '61 a 68 g',   ref: 'Norma: Extra Grande', h: 108,
+    prices: { tradicional: { docena: 4500, bandeja: 10500, caja: 60000 }, pastoreo: { docena: 5800, bandeja: 13800, caja: 79000 } } },
+  { id: 'primera',    name: 'Primera',     grams: '54 a 61 g',   ref: 'Norma: Grande',       h: 100,
+    prices: { tradicional: { docena: 4100, bandeja: 9500,  caja: 54000 }, pastoreo: { docena: 5300, bandeja: 12600, caja: 72000 } } },
+  { id: 'segunda',    name: 'Segunda',     grams: '47 a 54 g',   ref: 'Norma: Mediano',      h: 92,
+    prices: { tradicional: { docena: 3700, bandeja: 8500,  caja: 48000 }, pastoreo: { docena: 4800, bandeja: 11400, caja: 65000 } } }
+];
+
+/* ========================================================= */
+const EGG = 'M50 4C22 4 6 52 6 80 6 108 26 126 50 126 74 126 94 108 94 80 94 52 78 4 50 4Z';
+const $ = (s) => document.querySelector(s);
+const clp = (n) => '$' + String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+const fmtById = (id) => FORMATS.find((f) => f.id === id);
+const prodById = (id) => PRODUCTS.find((p) => p.id === id);
+const store = {
+  get(k, d) { try { const v = localStorage.getItem('mdj_' + k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } },
+  set(k, v) { try { localStorage.setItem('mdj_' + k, JSON.stringify(v)); } catch (e) {} }
+};
+
+const priceOf = (line, pid, fmt) => prodById(pid).prices[line][fmt];
+const lineOf = (c) => (LINES[c.line] ? c.line : 'tradicional');
+
+const state = {
+  line: 'tradicional',
+  fmt: {}, qty: {}, justAdded: null,
+  cart: store.get('cart', []).filter((c) => prodById(c.pid) && fmtById(c.fmt)),
+  step: 'cart', delivery: 'retiro',
+  confirmed: store.get('confirmed', CONFIG.demoStartPoints),
+  pending: store.get('pending', 0),
+  lastPts: 0
+};
+const save = () => { store.set('cart', state.cart); store.set('confirmed', state.confirmed); store.set('pending', state.pending); };
+const eggSvg = (w, h, label, stroke, fill) =>
+  `<svg width="${w}" height="${h}" viewBox="0 0 100 130" role="img" aria-label="${label}"><path d="${EGG}" fill="${fill}" stroke="#3B1E0C" stroke-width="${stroke}"/><ellipse cx="34" cy="44" rx="8" ry="14" fill="#fff" opacity="${fill === '#FFFFFF' ? 0 : .35}"/></svg>`;
+
+/* ---------- Comparador y reglas ---------- */
+function renderSizes() {
+  const fill = LINES[state.line].eggFill;
+  $('#sizes').innerHTML = PRODUCTS.map((p) => `<div>${eggSvg(Math.round(p.h * .77), p.h, 'Tamaño referencial ' + p.name, 4, fill)}</div>`).join('');
+}
+$('#sizeLabels').innerHTML = PRODUCTS.map((p) => `<div><strong>${p.name}</strong><span>${p.grams}</span></div>`).join('');
+$('#rules').innerHTML = FORMATS.map((f) => `<div class="rule"><b>+${f.pts}</b><span>${f.label} (${f.units} u)</span></div>`).join('');
+$('#footerPhone').textContent = 'WhatsApp Business: +' + CONFIG.whatsapp;
+
+/* ---------- Catálogo ---------- */
+function renderCatalog() {
+  const L = LINES[state.line];
+  $('#catalogo').dataset.line = state.line;
+  $('#lineTitle').textContent = L.title;
+  $('#lineBanner').innerHTML = L.banner;
+  document.querySelectorAll('.line-tab').forEach((t) => t.setAttribute('aria-pressed', t.dataset.line === state.line));
+  renderSizes();
+  $('#grid').innerHTML = PRODUCTS.map((p) => {
+    const price = p.prices[state.line];
+    const fmt = state.fmt[p.id] || 'bandeja';
+    const f = fmtById(fmt);
+    const qty = state.qty[p.id] || 1;
+    const pts = f.pts * qty;
+    const added = state.justAdded === p.id;
+    return `
+    <article class="card">
+      <div class="card-top">
+        <div class="card-info">
+          <h3 class="display">${p.name}</h3>
+          <span class="grams">${p.grams}</span>
+          <span class="ref">${p.ref}</span>
+        </div>
+        ${eggSvg(Math.round(p.h * .62 * .77), Math.round(p.h * .62), 'Tamaño referencial ' + p.name, 5, L.eggFill)}
+      </div>
+      <div class="formats" role="group" aria-label="Formato ${p.name}">
+        ${FORMATS.map((x) => `<button type="button" class="fmt" data-act="fmt" data-p="${p.id}" data-f="${x.id}" aria-pressed="${x.id === fmt}">${x.label}<small>${x.units} u</small></button>`).join('')}
+      </div>
+      <div class="price-row">
+        <span class="display price">${clp(price[fmt] * qty)}</span>
+        <span class="small-muted">${clp(price[fmt] / f.units)} c/u</span>
+      </div>
+      <div class="buy-row">
+        <div class="stepper">
+          <button type="button" aria-label="Restar uno" data-act="dec" data-p="${p.id}">−</button>
+          <span aria-live="polite">${qty}</span>
+          <button type="button" aria-label="Sumar uno" data-act="inc" data-p="${p.id}">+</button>
+        </div>
+        ${added
+          ? `<button type="button" class="add done" data-open-cart>¡Listo! Ver carrito</button>`
+          : `<button type="button" class="add" data-act="add" data-p="${p.id}">Agregar</button>`}
+      </div>
+      <div class="pts">
+        <svg width="14" height="18" viewBox="0 0 100 130" aria-hidden="true"><path d="${EGG}" fill="#F5A51C" stroke="#3B1E0C" stroke-width="10"/></svg>
+        <span>Suma +${pts} ${pts === 1 ? 'punto' : 'puntos'} a tu Huevo Premio</span>
+      </div>
+    </article>`;
+  }).join('');
+}
+
+let addedTimer;
+$('#grid').addEventListener('click', (e) => {
+  const b = e.target.closest('[data-act]');
+  if (!b) return;
+  const id = b.dataset.p;
+  const qty = state.qty[id] || 1;
+  if (b.dataset.act === 'fmt') state.fmt[id] = b.dataset.f;
+  if (b.dataset.act === 'inc') state.qty[id] = qty + 1;
+  if (b.dataset.act === 'dec') state.qty[id] = Math.max(1, qty - 1);
+  if (b.dataset.act === 'add') {
+    const fmt = state.fmt[id] || 'bandeja';
+    const key = state.line + '-' + id + '-' + fmt;
+    const line = state.cart.find((c) => c.key === key);
+    if (line) line.qty += qty; else state.cart.push({ key, line: state.line, pid: id, fmt, qty });
+    state.qty[id] = 1;
+    state.justAdded = id;
+    clearTimeout(addedTimer);
+    addedTimer = setTimeout(() => { state.justAdded = null; renderCatalog(); }, 1800);
+    save(); renderCart();
+  }
+  renderCatalog();
+});
+
+document.querySelectorAll('.line-tab').forEach((t) => t.addEventListener('click', () => {
+  state.line = t.dataset.line;
+  state.justAdded = null;
+  renderCatalog();
+}));
+
+/* ---------- Carrito ---------- */
+function totals() {
+  let total = 0, pts = 0, units = 0, count = 0;
+  state.cart.forEach((c) => {
+    const f = fmtById(c.fmt);
+    total += priceOf(lineOf(c), c.pid, c.fmt) * c.qty; pts += f.pts * c.qty; units += f.units * c.qty; count += c.qty;
+  });
+  return { total, pts, units, count };
+}
+
+function formData() {
+  return {
+    name: $('#fName').value.trim(),
+    phone: $('#fPhone').value.trim(),
+    address: $('#fAddress').value.trim(),
+    note: $('#fNote').value.trim()
+  };
+}
+
+function missingFields() {
+  const d = formData(), m = [];
+  if (d.name.length < 2) m.push('nombre');
+  if (d.phone.replace(/\D/g, '').length < 8) m.push('teléfono');
+  if (state.delivery === 'despacho' && d.address.length < 4) m.push('dirección');
+  return m;
+}
+
+function orderMessage() {
+  const d = formData(), t = totals();
+  const lines = state.cart.map((c) => {
+    const p = prodById(c.pid), f = fmtById(c.fmt), ln = lineOf(c);
+    return `• ${c.qty} × ${f.label} (${f.units} u) ${p.name} ${ln === 'pastoreo' ? 'PASTOREO (café)' : 'TRADICIONAL (blanco)'} — ${clp(priceOf(ln, c.pid, c.fmt) * c.qty)}`;
+  });
+  return [
+    `¡Hola, ${CONFIG.storeName}! Quiero hacer este pedido:`, '',
+    ...lines, '',
+    `Total: ${clp(t.total)} (${t.units} huevos)`,
+    `Puntos Huevo Premio: +${t.pts}`, '',
+    `Nombre: ${d.name}`,
+    `Teléfono: ${d.phone}`,
+    `Entrega: ${state.delivery === 'despacho' ? 'Despacho a ' + d.address : 'Retiro'}`,
+    ...(d.note ? [`Comentario: ${d.note}`] : []), '',
+    'Quedo atento/a a los datos para transferir.'
+  ].join('\n');
+}
+const waLink = (text) => `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(text)}`;
+
+function renderCart() {
+  const t = totals();
+  const empty = state.cart.length === 0;
+  $('#cartCount').textContent = t.count;
+  $('#floatCart').textContent = 'Ver carrito · ' + clp(t.total);
+  $('#floatCart').hidden = empty || !$('#overlay').hidden;
+
+  $('#drawerTitle').textContent = { cart: 'Tu pedido', form: 'Tus datos', sent: 'Listo' }[state.step];
+  $('#stepCart').hidden = state.step !== 'cart';
+  $('#stepForm').hidden = state.step !== 'form';
+  $('#stepSent').hidden = state.step !== 'sent';
+  $('#emptyCart').hidden = !empty;
+
+  $('#cartLines').innerHTML = state.cart.map((c) => {
+    const p = prodById(c.pid), f = fmtById(c.fmt), ln = lineOf(c), unit = priceOf(ln, c.pid, c.fmt);
+    return `
+    <div class="line">
+      <div class="line-top">
+        <div><strong>${p.name}</strong><span class="chip chip-${ln}">${ln === 'pastoreo' ? 'Pastoreo' : 'Tradicional'}</span><div class="small-muted">${f.label} ${f.units} u · ${clp(unit)} c/u</div></div>
+        <strong>${clp(unit * c.qty)}</strong>
+      </div>
+      <div class="line-bottom">
+        <div class="stepper">
+          <button type="button" aria-label="Restar uno" data-line="${c.key}" data-d="-1">−</button>
+          <span>${c.qty}</span>
+          <button type="button" aria-label="Sumar uno" data-line="${c.key}" data-d="1">+</button>
+        </div>
+        <button type="button" class="link-btn" data-line="${c.key}" data-d="${-c.qty}">Quitar</button>
+      </div>
+    </div>`;
+  }).join('');
+
+  $('#drawerFoot').hidden = state.step === 'sent' || empty;
+  $('#cartTotal').textContent = clp(t.total);
+  $('#cartMeta').innerHTML = `${t.units} huevos · este pedido suma <strong style="color:#3B1E0C">+${t.pts} puntos</strong>`;
+  $('#toForm').hidden = state.step !== 'cart';
+  $('#toCart').hidden = state.step !== 'form';
+  updateSendButton();
+}
+
+function updateSendButton() {
+  const inForm = state.step === 'form';
+  const missing = missingFields();
+  const ok = inForm && missing.length === 0 && state.cart.length > 0;
+  $('#sendWa').hidden = !ok;
+  $('#sendDisabled').hidden = !inForm || ok;
+  $('#sendDisabled').textContent = 'Completa: ' + missing.join(', ');
+  if (ok) $('#sendWa').href = waLink(orderMessage());
+}
+
+$('#cartLines').addEventListener('click', (e) => {
+  const b = e.target.closest('[data-line]');
+  if (!b) return;
+  const line = state.cart.find((c) => c.key === b.dataset.line);
+  line.qty += Number(b.dataset.d);
+  state.cart = state.cart.filter((c) => c.qty > 0);
+  save(); renderCart();
+});
+
+$('#toForm').addEventListener('click', () => { state.step = 'form'; renderCart(); $('#fName').focus(); });
+$('#toCart').addEventListener('click', () => { state.step = 'cart'; renderCart(); });
+['#fName', '#fPhone', '#fAddress', '#fNote'].forEach((s) => $(s).addEventListener('input', updateSendButton));
+document.querySelectorAll('[data-delivery]').forEach((b) => b.addEventListener('click', () => {
+  state.delivery = b.dataset.delivery;
+  document.querySelectorAll('[data-delivery]').forEach((x) => x.setAttribute('aria-pressed', x === b));
+  $('#addressField').hidden = state.delivery !== 'despacho';
+  updateSendButton();
+}));
+
+$('#sendWa').addEventListener('click', () => {
+  const t = totals();
+  state.lastPts = t.pts;
+  state.pending += t.pts;
+  state.cart = [];
+  state.step = 'sent';
+  $('#sentPts').textContent = `+${t.pts} puntos para tu Huevo Premio (pendientes de confirmación)`;
+  save();
+  setTimeout(() => { renderCart(); renderPremio(); }, 50); // deja que el enlace se abra primero
+});
+
+/* ---------- Abrir / cerrar ---------- */
+function openCart() {
+  if (state.step === 'sent') state.step = 'cart';
+  $('#overlay').hidden = false;
+  document.body.style.overflow = 'hidden';
+  renderCart();
+}
+function closeCart() {
+  if (state.step === 'sent') state.step = 'cart';
+  $('#overlay').hidden = true;
+  document.body.style.overflow = '';
+  renderCart();
+}
+document.addEventListener('click', (e) => {
+  if (e.target.closest('[data-open-cart]')) openCart();
+  if (e.target.closest('[data-close-cart]')) closeCart();
+  if (e.target === $('#overlay')) closeCart();
+});
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !$('#overlay').hidden) closeCart(); });
+
+/* ---------- Huevo Premio ---------- */
+function renderPremio() {
+  const goal = CONFIG.goal;
+  const pct = Math.min(1, state.confirmed / goal);
+  const pctPending = Math.min(1, (state.confirmed + state.pending) / goal);
+  const full = state.confirmed >= goal;
+  const label = Math.round(pct * 100) + '%';
+  $('#solidFill').setAttribute('y', 126 - 122 * pct);
+  $('#pendingFill').setAttribute('y', 126 - 122 * pctPending);
+  $('#eggPct').textContent = label;
+  $('#heroPct').textContent = label;
+  $('#eggSvg').setAttribute('aria-label', 'Huevo Premio lleno al ' + label);
+  $('#eggWrap').classList.toggle('wobble', full);
+  $('#ptsText').textContent = `${state.confirmed} / ${goal} puntos`;
+  $('#pendingText').hidden = state.pending === 0;
+  $('#pendingText').textContent = `+${state.pending} pendientes de confirmación (parte clara del huevo)`;
+  $('#remaining').textContent = full
+    ? '¡Tu huevo está lleno! Reclama tu docena por WhatsApp.'
+    : `Te faltan ${goal - state.confirmed} puntos para tu docena gratis.`;
+  $('#claimBtn').hidden = !full;
+  $('#claimBtn').href = waLink(`¡Hola, ${CONFIG.storeName}! Llené mi Huevo Premio (${state.confirmed}/${goal} puntos) y quiero reclamar mi docena gratis.`);
+  $('#confirmDemo').hidden = !CONFIG.showDemoButton || state.pending === 0;
+}
+$('#confirmDemo').addEventListener('click', () => { state.confirmed += state.pending; state.pending = 0; save(); renderPremio(); });
+$('#claimBtn').addEventListener('click', () => {
+  setTimeout(() => { state.confirmed = Math.max(0, state.confirmed - CONFIG.goal); save(); renderPremio(); }, 50);
+});
+
+renderCatalog();
+renderCart();
+renderPremio();
+</script>
+</body>
+</html>
